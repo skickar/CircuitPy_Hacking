@@ -1,0 +1,12 @@
+import usb_hid
+import time
+from adafruit_hid.mouse import Mouse
+
+m = Mouse(usb_hid.devices) # Mouse Setup for moving
+delay_time = 1
+sensitivity = 10
+
+while True:
+    time.sleep(delay_time)
+    m.move(sensitivity)
+    sensitivity = (sensitivity * -1)
