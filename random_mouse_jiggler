@@ -1,0 +1,16 @@
+import usb_hid
+import time
+import random
+from adafruit_hid.mouse import Mouse
+
+m = Mouse(usb_hid.devices) # Mouse Setup for moving
+delay_time = 1  # Set the delay time between mouse movements
+sensitivity_max = 5 # Set the maximum amount of mouse movement
+sensitivity_min = (sensitivity_max * -1)    # Set the minimum amount for mouse movement (negative of maximum)
+
+while True: # Run this continuiously 
+    time.sleep(delay_time)  # Delay by this amount of time between each movement
+    random_x = random.randint(sensitivity_min, sensitivity_max) # Get a random value for the x value
+    random_y = random.randint(sensitivity_min, sensitivity_max) # Get a random value for the y value
+    m.move(random_x, random_y)  # Move the mouse a random value
+    print(" Moving: X{} Y{}".format(random_x, random_y))    # Print the value we just moved
